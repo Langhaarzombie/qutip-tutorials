@@ -42,7 +42,7 @@ $\hat{M}_z = \sum_i \hat{\sigma}_z^i$
 
 of the chain.
 We encourage you to play with the parameters yourself and compare different parameter regimes such as $J < h$, $J = h$ and $J > h$.
-Additionally, try increasing the chain length and playing witht the `krylov_dim` parameter to see when the algorithm becomes faster than the standard SE or ME solver.
+Additionally, try increasing the chain length and playing with the `krylov_dim` parameter to see when the algorithm becomes faster than the standard SE or ME solver.
 
 ```python
 def operator_chain(N, op):
