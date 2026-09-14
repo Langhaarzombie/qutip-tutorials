@@ -44,8 +44,19 @@ of the chain.
 We encourage you to play with the parameters yourself and compare different parameter regimes such as $J < h$, $J = h$ and $J > h$.
 Additionally, try increasing the chain length and playing with the `krylov_dim` parameter to see when the algorithm becomes faster than the standard SE or ME solver.
 
+
+## Helper Functions
+
+Let's define some functions to help us in this tutorial.
+First, we define a function that expans an operator to the appropriate tensor structure to act on the Hilbert space of the whole chain.
+Second, we write a function to build the Ising chain with a given length $N$, coupling strength $J$ and transverse field $h$.
+
 ```python
 def operator_chain(N, op):
+    """
+    Return tensor expansions of the operator `op` for each site in the chain.
+    """
+
     op_list = []
     for i in range(N):
         ops = [qeye(2)] * N
@@ -55,6 +66,14 @@ def operator_chain(N, op):
 
 
 def ising_chain(N, J, h):
+    """
+    Return the Hamiltonian for the Ising chain. For a given
+
+    N ... length
+    J ... coupling strength
+    h ... transverse field strength
+    """
+
     sx_list = operator_chain(N, sigmax())
     sz_list = operator_chain(N, sigmaz())
 
@@ -67,6 +86,15 @@ def ising_chain(N, J, h):
 
     return H
 ```
+
+## Dynamics of fully polarized state
+
+We now want to calculate the magnetization dynamics of the Ising chain, starting from a fully polarized state.
+For that, we create a chain of (resonable) length, set $J = h = 1$ and provide the `krylovsolve` with the initial state
+
+$| \psi_0 \rangle = | \uparrow \uparrow ... \rangle$.
+
+Since small chain lengths are still manageable with `sesolve`, we directly compare the two evolutions.
 
 ```python
 N = 8  # number of spins
@@ -105,6 +133,9 @@ plt.legend()
 plt.show()
 ```
 
+As described above, the choice of $J$ and $h$ significantly changes the magnetization dynamics.
+We show below, how choosing $J=0$, $J=h$ and $J=2h$ influences this.
+
 ```python
 Js = [0, 1, 2]  # factors
 
@@ -122,6 +153,10 @@ plt.xlabel("Time")
 plt.legend()
 plt.show()
 ```
+
+Naturally, when $J=0$, the magnetization coherently ossiclates between $| \uparrow \uparrow ... \rangle$ and $| \downarrow \downarrow ... \rangle$.
+The frequency is strongly localized as we can see in the FFT analysis below.
+Oscillations become more complex in the cases $J=h$ and $J=2h$ as we see multiple pronounced frequencies as well as a stronger polarisation as a whole as $J$ is increased.
 
 ```python
 for i, m in enumerate(mags):
