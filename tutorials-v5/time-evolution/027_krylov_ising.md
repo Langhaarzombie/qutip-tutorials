@@ -18,7 +18,7 @@ Author: Maximilian Meyer-Mölleringhof
 
 We are looking at the functionality of the [Krylov solver in QuTiP](https://qutip.readthedocs.io/en/stable/guide/dynamics/dynamics-krylov.html) here.
 Especially when the Hilbert space gets large, using the Krylov subspace method can give great computational speed ups.
-To us it, we provide the `krylovsolve` function an extra argument `krylov_dim` which determines the maximum subspace size it will construct.
+To use it, we provide the `krylovsolve` function an extra argument `krylov_dim` which determines the maximum subspace size it will construct.
 By repeatedly constructing such a subspace, we iteratively solve the dynamics of our quantum system.
 At the current state, the Krylov solver in QuTiP supports pure and mixed state as well as closed in (Lindblad like) open quantum systems.
 
