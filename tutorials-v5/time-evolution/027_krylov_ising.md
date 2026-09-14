@@ -137,7 +137,7 @@ plt.legend()
 plt.show()
 ```
 
-## Dynamics of a tilted Domain Wall
+## Dynamics of a tilted domain wall
 
 To make the dynamics in the chain a bit more interesting, let's look at the magnetization of the individual sites in the chain.
 We will look at the evolution of a tiled domain wall which is modeled by the initial state
