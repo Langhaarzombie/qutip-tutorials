@@ -303,10 +303,10 @@ about()
 ## Testing
 
 ```python
-np.testing.assert_allclose(
-    cl_res.expect[0], se_exact.expect[0], atol=0.01, rtol=0
+assert np.allclose(
+    cl_res.expect[0], se_exact.expect[0], atol=1e-3,
 ), "Closed System calculations don't agree"
-np.testing.assert_allclose(
-    op_res.expect[0], me_exact.expect[0], atol=0.01, rtol=0
+assert np.allclose(
+    op_res.expect[0], me_exact.expect[0], atol=1e-3,
 ), "Open System calculations don't agree"
 ```
