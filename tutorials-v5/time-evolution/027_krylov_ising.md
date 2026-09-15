@@ -48,7 +48,7 @@ Additionally, try increasing the chain length and playing with the `krylov_dim` 
 ## Helper Functions
 
 Let's define some functions to help us in this tutorial.
-First, we define a function that expans an operator to the appropriate tensor structure to act on the Hilbert space of the whole chain.
+First, we define a function that expands an operator to the appropriate tensor structure to act on the Hilbert space of the whole chain.
 Second, we write a function to build the Ising chain with a given length $N$, coupling strength $J$ and transverse field $h$.
 
 ```python
@@ -90,7 +90,7 @@ def ising_chain(N, J, h):
 ## Dynamics of fully polarized state
 
 We now want to calculate the magnetization dynamics of the Ising chain, starting from a fully polarized state.
-For that, we create a chain of (resonable) length, set $J = h = 1$ and provide the `krylovsolve` with the initial state
+For that, we create a chain of (reasonable) length, set $J = h = 1$ and provide `krylovsolve` with the initial state
 
 $| \psi_0 \rangle = | \uparrow \uparrow ... \rangle$.
 
@@ -154,7 +154,7 @@ plt.legend()
 plt.show()
 ```
 
-Naturally, when $J=0$, the magnetization coherently ossiclates between $| \uparrow \uparrow ... \rangle$ and $| \downarrow \downarrow ... \rangle$.
+Naturally, when $J=0$, the magnetization coherently oscillates between $| \uparrow \uparrow ... \rangle$ and $| \downarrow \downarrow ... \rangle$.
 The frequency is strongly localized as we can see in the FFT analysis below.
 Oscillations become more complex in the cases $J=h$ and $J=2h$ as we see multiple pronounced frequencies as well as a stronger polarisation as a whole as $J$ is increased.
 
